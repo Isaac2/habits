@@ -1,0 +1,228 @@
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
+body{
+  height: 100%;
+  width: 100%;
+  margin:  0;
+  min-width: 500px;
+  overflow: auto;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+  margin: 0;
+  padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Roboto', sans-serif;
+}
+
+p{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.home-top-bar{
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  background-color: #00796B;
+  color: white;
+  overflow-y: hidden;
+}
+
+.home-topBar-menu{
+  width: auto;
+  height: 100;
+  float: left;
+}
+
+.home-pinboard{
+  width: 100%;
+  height: 217px;
+  background-color: #00695C;
+  box-sizing: border-box;
+  padding-top: 60px;
+  padding-left: 1%;
+}
+
+.home-top-title{
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  min-width: 150px;
+  cursor: pointer;
+}
+
+.home-topbar-item{
+  width: 100px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  cursor: pointer;
+  background-color: #00796B;
+  border-bottom: solid 4px #00897B;
+  margin-left: 5px;
+}
+
+.home-topbar-item:hover{
+  background-color: #00897B;
+}
+
+.pinboardWrapper{
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-userImage{
+  width: 125px;
+  height: 125px;
+  background-color: red;
+  background-image: url('img/character.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.home-pinboardWrapper{
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  margin-right: 1%;
+}
+
+.stats{
+   width: 200px;
+   flex-flow: column;
+   align-items: flex-start;
+   color: white;
+}
+
+.smallText{
+  font-size: 75%;
+}
+
+.home-mainWrapper{
+  height: calc(100vh - 217px);
+  width: 100%;
+  background-color: #ECEFF1;
+  box-sizing: border-box;
+  padding-top: 3%;
+  padding-bottom: 45px;
+  display: flex;
+  justify-content: center;
+}
+
+.home-segmentWrapper{
+  width: 99%;
+  height: 80%;
+}
+
+.home-listView{
+  width: 49%;
+  height: 100%;
+  float: left;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  box-sizing: border-box;
+}
+
+.listTitle{
+  width: 100%;
+  height: 5%;
+  box-sizing: border-box;
+  padding-left: 1%;
+  padding-top: 0.5%;
+}
+
+.theList{
+  width: 100%;
+  height: 95%;
+  background-color: #B0BEC5;
+  border-radius: 5px 5px 5px 5px;
+  box-sizing: border-box;
+  padding-top: 1%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.listItem{
+  width: 99%;
+  height: 15%;
+  background-color: white;
+  margin-bottom: 1%;
+  border-radius: 2.5px 2.5px 2.5px 2.5px;
+  box-sizing: border-box;
+  float: left;
+  display: flex;
+}
+
+.listItem-done{
+  width: 7%;
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 2.5px 0px 0px 2.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.listItem-description{
+  width: 86%;
+  height: 100%;
+  float: left;
+  box-sizing: border-box;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+}
+
+.listItem-fail{
+  width: 7%;
+  height: 100%;
+  background-color: #F44336;
+  float: left;
+  border-radius: 0px 2.5px 2.5px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+footer{
+  height: 45px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  border-top: solid 1px #CFD8DC;
+}
+
+.variant{
+  background-color: #FFC107;
+}
+
+@media screen and (max-width: 950px){
+  .home-mainWrapper{
+    height: 150vh;
+    flex-flow: column;
+    padding-bottom: 45px;
+  }
+  .home-listView{
+    width: 98%;
+    height: 80%;
+    margin-bottom: 45px;
+  }
+}
