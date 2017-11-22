@@ -1,8 +1,3 @@
-var firebaseApp = firebase.initializeApp(firebaseConfig, "Auth");
-firebase.initializeApp(firebaseConfig);
-const firebaseAuth = firebaseApp.auth();
-const firebaseDB = firebaseApp.database();
-
 function checkFieldsSignUp(email, password, repeatedPassword){
     if(email === null){
         this.signUpWarningMessage = "Your email is invalid.";

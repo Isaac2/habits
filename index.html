@@ -44,13 +44,16 @@
               </hgroup>
               <div class="theList">
                 <div class="listItem" ng-repeat="task in taskList">
+
                   <div class="listItem-done">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                   </div>
+
                   <div class="listItem-description">
                     <p class="smallText">{{task.name}}</p>
                     <p class="smallText">{{task.value}}</p>
                   </div>
+
                   <div class="listItem-fail">
                     <i class="fa fa-minus" aria-hidden="true"></i>
                   </div>
@@ -61,6 +64,7 @@
 
             </div>
             <div class="home-listView" ng-controller = "HabitController">
+              
               <hgroup class="listTitle">
                 <h3>Habits</h3>
               </hgroup>
@@ -68,18 +72,18 @@
                 <div class="listItem" ng-repeat="habit in habitList">
                   
                   <div class="listItem-done variant">
-                    <a href="https://damp-fjord-81017.herokuapp.com/habits/substractScore/"+{{habit.id}}>
+                    <a onclick="increaseScoreHabit(habit)">
                       <i class="fa fa-plus" aria-hidden="true"></i>
                     </a>                    
                   </div>
 
                   <div class="listItem-description">
-                    <font class="smallText" color={{habit.color}}>{{habit.name}}</font>
+                    <p><font class="smallText" color={{habit.color}}>{{habit.name}}</font>
                     <font class="smallText">{{habit.score}}</font>
                   </div>
 
                   <div class="listItem-fail">
-                    <a href="https://damp-fjord-81017.herokuapp.com/habits/addScore/"+{{habit.id}}>
+                    <a onclick="increaseScoreHabit(habit)">                      
                       <i class="fa fa-minus" aria-hidden="true"></i>
                     </a>
                   </div>

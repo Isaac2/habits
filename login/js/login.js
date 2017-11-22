@@ -1,12 +1,6 @@
-var firebaseApp = firebase.initializeApp(firebaseConfig, "Auth");
-firebase.initializeApp(firebaseConfig);
-const firebaseAuth = firebaseApp.auth();
-
-firebaseAuth.onAuthStateChanged(function(user) {
-    if (user) {
-        window.location = "../index.html?uid="+user.uid;
-    }
-});
+function goToHome(idToken){
+    window.location = "../index.html?uid="+idToken;
+}
 
 function logIn(){
     var email = document.getElementById("emailTextField").value;
@@ -19,8 +13,15 @@ function logIn(){
 
     const promise = firebaseAuth.signInWithEmailAndPassword(email, password)
         .then(function (result) {
-            //console.log(result)
-    })                                
+
+            firebaseAuth.currentUser.getIdToken(/* forceRefresh */ true)
+                .then(function(idToken) {
+                    goToHome(idToken);
+                }).catch(function(error) {
+                    // Handle error
+                });
+                
+        })                                
         .catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;

@@ -6,3 +6,8 @@ var firebaseConfig = {
 	"storageBucket": "proyecto-final-arquitectura.appspot.com",
 	"messagingSenderId": "619718630609"
 }
+
+var firebaseApp = firebase.initializeApp(firebaseConfig, "Auth");
+firebase.initializeApp(firebaseConfig);
+const firebaseAuth = firebaseApp.auth();
+const firebaseDB = firebaseApp.database();
