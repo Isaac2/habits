@@ -48,13 +48,15 @@ app.controller("HabitController", function($scope, $http) {
 
 	$http.get(APIurl)
 	.then(function(response) {
-		console.log(response.data);
-		$scope.habitList = response.data;
+		addColorToHabitsArray(response.data)
+		$scope.habitList = response.data;		
 	})
 	.catch(function (error){
 		if(error.status === 401){
 			alert("Tu sesión ha expirado");
 			window.location = "login/index.html";
+		}else{
+			console.log(error);
 		}
 	})
 
@@ -88,11 +90,62 @@ app.controller("HabitController", function($scope, $http) {
 
 });
 
-function calculateColor(habit){
-	var firstRange = 0;
-	var lastRange = 50;
+function addColorToHabitsArray(habitsArray){
+	for(var i=0; i<habitsArray.length; i++){
+		habitsArray[i] = calculateColor(habitsArray[i]);
+	}
+}
 
-	habit.color = "red";
+function initializeColors(){
+	var firstRange = {
+		lowerLimit: Number.MIN_SAFE_INTEGER,
+		upperLimit: 0,
+		color: "Red"
+	}
+
+	var OrangeColor = {
+		lowerLimit: 0,
+		upperLimit: 9,
+		color: "Orange"
+	}
+
+	var YellowColor = {
+		lowerLimit: 10,
+		upperLimit: 39,
+		color: "Yellow"
+	}
+
+	var GreenColor = {
+		lowerLimit: 40,
+		upperLimit: 49,
+		color: "Green"
+	}
+
+	var lastRange = {
+		lowerLimit: 50,
+		upperLimit: Number.MAX_SAFE_INTEGER,
+		color: "Blue"
+	}	
+
+	var colorsList = [];
+	colorsList.push(firstRange);
+	colorsList.push(OrangeColor);
+	colorsList.push(YellowColor);	
+	colorsList.push(GreenColor);
+	colorsList.push(lastRange);
+
+	return colorsList;
+}
+
+function calculateColor(habit){
+
+	colorsList = initializeColors();
+
+	for(var i = 0; i<colorsList.length; i++){
+		if(habit.score >= colorsList[i].lowerLimit && habit.score <= colorsList[i].upperLimit){
+			habit.color = colorsList[i].color;
+		}
+	}
 
 	return habit;
 }
