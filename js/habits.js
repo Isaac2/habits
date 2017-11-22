@@ -1,4 +1,13 @@
+
+var url = new URL(window.location.href);
+var uid = url.searchParams.get("uid");
+
+if (uid==null) {
+  window.location="login";
+}
+
 var app = angular.module("habits", []);
+
 
 app.controller("TopBarController", function($scope) {
     $scope.title = "My Habits";
