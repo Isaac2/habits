@@ -59,15 +59,27 @@ app.controller("HabitController", function($scope, $http) {
 	})
 
 	$scope.increaseScoreHabit = function(habitID){
-		console.log(habitID);
-
-		var APIurl = "https://damp-fjord-81017.herokuapp.com/habits/addScore/"+habitID+"/?token="+firebaseToken;	
+		var APIurl = "https://damp-fjord-81017.herokuapp.com/habits/addScore/"+habitID.id+"/?token="+firebaseToken;	
 
 		$http.get(APIurl)
 		.then(function(response) {
-			$scope.habitList = response.data;
-		});	
+			console.log(response.data);
+		});
 	};
+
+	$scope.decreaseScoreHabit = function(habitID){
+		var APIurl = "https://damp-fjord-81017.herokuapp.com/habits/substractScore/"+habitID.id+"/?token="+firebaseToken;	
+
+		$http.get(APIurl)
+		.then(function(response) {
+			console.log(response.data);
+		})
+		.catch(function (error){
+			console.log(error);
+		})
+	};
+
+
 
 });
 

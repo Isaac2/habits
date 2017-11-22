@@ -72,7 +72,7 @@
                 <div class="listItem" ng-repeat="habit in habitList">
                   
                   <div class="listItem-done variant">
-                    <a onclick="increaseScoreHabit(habit)">
+                    <a ng-click="increaseScoreHabit(habit)" style="cursor: pointer">
                       <i class="fa fa-plus" aria-hidden="true"></i>
                     </a>                    
                   </div>
@@ -83,7 +83,7 @@
                   </div>
 
                   <div class="listItem-fail">
-                    <a onclick="increaseScoreHabit(habit)">                      
+                    <a ng-click="decreaseScoreHabit(habit)" style="cursor: pointer">
                       <i class="fa fa-minus" aria-hidden="true"></i>
                     </a>
                   </div>
