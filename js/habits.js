@@ -58,13 +58,17 @@ app.controller("HabitController", function($scope, $http) {
 		}
 	})
 
-	$scope.increaseScoreHabit = function(habitID){
-		var APIurl = "https://damp-fjord-81017.herokuapp.com/habits/addScore/"+habitID.id+"/?token="+firebaseToken;	
+	$scope.increaseScoreHabit = function(habit){
+		var APIurl = "https://damp-fjord-81017.herokuapp.com/habits/addScore/"+habit.id+"/?token="+firebaseToken;	
 
 		$http.get(APIurl)
 		.then(function(response) {
 			console.log(response.data);
-		});
+		})
+		.catch(function (error){
+			console.log("Error substracting score to habit "+habit.id);
+			console.log(error);
+		})		
 	};
 
 	$scope.decreaseScoreHabit = function(habitID){
@@ -75,8 +79,9 @@ app.controller("HabitController", function($scope, $http) {
 			console.log(response.data);
 		})
 		.catch(function (error){
+			console.log("Error adding score to habit "+habit.id);
 			console.log(error);
-		})
+		})	
 	};
 
 
