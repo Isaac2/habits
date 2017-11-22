@@ -1,14 +1,5 @@
-var config = {
-  apiKey: "AIzaSyCpH0xgjS4VIZb9X8o_c3zMbHvn7zRDIrg",
-  authDomain: "proyecto-final-arquitectura.firebaseapp.com",
-  databaseURL: "https://proyecto-final-arquitectura.firebaseio.com",
-  projectId: "proyecto-final-arquitectura",
-  storageBucket: "proyecto-final-arquitectura.appspot.com",
-  messagingSenderId: "619718630609"
-};
-
-var firebaseApp = firebase.initializeApp(config, "Auth");
-firebase.initializeApp(config);
+var firebaseApp = firebase.initializeApp(firebaseConfig, "Auth");
+firebase.initializeApp(firebaseConfig);
 const firebaseAuth = firebaseApp.auth();
 const firebaseDB = firebaseApp.database();
 

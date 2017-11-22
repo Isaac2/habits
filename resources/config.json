@@ -1,4 +1,4 @@
-{
+var firebaseConfig = {
 	"apiKey": "AIzaSyCpH0xgjS4VIZb9X8o_c3zMbHvn7zRDIrg",
 	"authDomain": "proyecto-final-arquitectura.firebaseapp.com",
 	"databaseURL": "https://proyecto-final-arquitectura.firebaseio.com",
