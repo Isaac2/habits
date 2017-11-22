@@ -5,9 +5,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://use.fontawesome.com/d3203824a1.js"></script>
     <link rel="stylesheet" href="style/main.css">
+    <script type="text/javascript" src="resources/config.json"></script>
     <script type="text/javascript" src="js/habits.js"></script>
     <meta charset="utf-8">
-    <title>ArQuitica</title>
+    <title>My Habits</title>
   </head>
   <body ng-app = "habits">
     <div class="home-top-bar" ng-controller = "TopBarController">
@@ -27,62 +28,71 @@
         </div>
       </div>
       <div class="home-pinboardWrapper stats">
-          <h4>{{user.name}}</h4>
-          <p class="smallText">{{user.level}}<p>
-            <p class="smallText">Account: {{user.email}}<p>
-          <br>
-          <h5>HP: {{user.currentHP}}/{{user.maxHP}}</h5>
-          <h5>XP: {{user.currentXP}}/{{user.maxXP}}</h5>
-      </div>
-    </div>
-    <div class="home-mainWrapper">
-      <div class="home-segmentWrapper">
-        <div class="home-listView" ng-controller = "TaskController">
-          <hgroup class="listTitle">
-          <h3>Tasks</h3>
-          </hgroup>
-          <div class="theList">
-            <div class="listItem" ng-repeat="task in taskList">
-              <div class="listItem-done">
-                <i class="fa fa-plus" aria-hidden="true"></i>
+        <h4>{{user.name}}</h4>
+        <p class="smallText">{{user.level}}<p>
+          <p class="smallText">Account: {{user.email}}<p>
+            <br>
+            <h5>HP: {{user.currentHP}}/{{user.maxHP}}</h5>
+            <h5>XP: {{user.currentXP}}/{{user.maxXP}}</h5>
+          </div>
+        </div>
+        <div class="home-mainWrapper">
+          <div class="home-segmentWrapper">
+            <div class="home-listView" ng-controller = "TaskController">
+              <hgroup class="listTitle">
+                <h3>Tasks</h3>
+              </hgroup>
+              <div class="theList">
+                <div class="listItem" ng-repeat="task in taskList">
+                  <div class="listItem-done">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  </div>
+                  <div class="listItem-description">
+                    <p class="smallText">{{task.name}}</p>
+                    <p class="smallText">{{task.value}}</p>
+                  </div>
+                  <div class="listItem-fail">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                  </div>
+
+                </div>
               </div>
-              <div class="listItem-description">
-                <p class="smallText">{{task.name}}</p>
-              </div>
-              <div class="listItem-fail">
-                  <i class="fa fa-minus" aria-hidden="true"></i>
-              </div>
+
 
             </div>
-          </div>
+            <div class="home-listView" ng-controller = "HabitController">
+              <hgroup class="listTitle">
+                <h3>Habits</h3>
+              </hgroup>
+              <div class="theList">
+                <div class="listItem" ng-repeat="habit in habitList">
+                  
+                  <div class="listItem-done variant">
+                    <a href="https://damp-fjord-81017.herokuapp.com/habits/substractScore/"+{{habit.id}}>
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                    </a>                    
+                  </div>
 
+                  <div class="listItem-description">
+                    <font class="smallText" color={{habit.color}}>{{habit.name}}</font>
+                    <font class="smallText">{{habit.score}}</font>
+                  </div>
 
-        </div>
-        <div class="home-listView" ng-controller = "HabitController">
-          <hgroup class="listTitle">
-          <h3>Habits</h3>
-          </hgroup>
-          <div class="theList">
-            <div class="listItem" ng-repeat="habit in habitList">
-              <div class="listItem-done variant">
-                <i class="fa fa-plus" aria-hidden="true"></i>
+                  <div class="listItem-fail">
+                    <a href="https://damp-fjord-81017.herokuapp.com/habits/addScore/"+{{habit.id}}>
+                      <i class="fa fa-minus" aria-hidden="true"></i>
+                    </a>
+                  </div>
+
+                </div>
               </div>
-              <div class="listItem-description">
-                <p class="smallText">{{habit.name}}</p>
-              </div>
-              <div class="listItem-fail">
-                  <i class="fa fa-minus" aria-hidden="true"></i>
-           </div>
+
 
             </div>
+
+
           </div>
-
-
         </div>
-
-
-      </div>
-    </div>
-    <footer></footer>
-  </body>
-</html>
+        <footer></footer>
+      </body>
+      </html>
