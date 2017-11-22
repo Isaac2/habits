@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src="js/register.js"></script>
     <link rel="stylesheet" type="text/css" href="style/main.css">
     <title>My Habits | Register</title>
@@ -15,13 +14,13 @@
       <div class="login-isle">
 
             <h1 class="white">Registering to MY HABITS</h1>
-            <form>
-              <input type="text" ng-model="email" placeholder="E-Mail">
-              <input type="password" ng-model="password" placeholder="Password">
-              <button class="login-btnLog"type="button" ng-click="register()">Register</button>
-            </form>
 
-
+            <input id="usernameTextField" type="text" placeholder="Name">
+            <input id="emailTextField" type="text" ng-model="email" placeholder="E-Mail">
+            <input id="birthdayTextField" type="text" placeholder="Birthday">
+            <input id="passwordTextField" type="password" ng-model="password" placeholder="Password">
+            <input id="repeatedPasswordTextField" type="Password" placeholder="Confirm password">
+            <button class="login-btnLog"type="button" onclick="SignUp()">Register</button>
 
       </div>
     </div>

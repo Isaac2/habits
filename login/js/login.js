@@ -8,14 +8,16 @@ var config = {
   messagingSenderId: "619718630609"
 };
 
+var firebaseApp = firebase.initializeApp(config, "Auth");
 firebase.initializeApp(config);
+const firebaseAuth = firebaseApp.auth();
 
-firebase.auth().onAuthStateChanged(user => {
+firebaseAuth.onAuthStateChanged(user => {
   if(user) {
     //window.location = '..'; //After successful login, user will be redirected to home.html
     console.log(user);
     userid = user.uid;
-    firebase.auth().signOut().then(function() {
+    firebaseAuth.signOut().then(function() {
     }, function(error) {
       console.error('Sign Out Error', error);
     });
@@ -23,32 +25,35 @@ firebase.auth().onAuthStateChanged(user => {
   }
 });
 
+function logIn(){
+    var email = document.getElementById("emailTextField").value;
+    var password = document.getElementById("passwordTextField").value;
 
-var app = angular.module("login", []);
+    if(email === null || password === null){
+        alert("These fields cannot be empty.");
+        return;
+    }            
 
-app.controller("logForm", function($scope) {
-    $scope.log = function(){
-      console.log("logging in");
-      firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
-        .then(function() {
-          // Existing and future Auth states are now persisted in the current
-          // session only. Closing the window would clear any existing state even
-          // if a user forgets to sign out.
-          // ...
-          // New sign-in will be persisted with session persistence.
-          return firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password);
-        })
+    const promise = firebaseAuth.signInWithEmailAndPassword(email, password)
+        .then(function (result) {
+            //console.log(result)
+    })                                
         .catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-            alert(errorCode +": "+errorMessage);
-        });
-        console.log('worked');
-    }
+            var errorCode = error.code;
+            var errorMessage = error.message;
 
-    $scope.register = function(){
-      console.log("registering");
-      window.location="register"
-    }
-});
+            if(error.code !== undefined){
+                alert(errorMessage);
+            }
+            else{
+                errorMessage = "There is no user record corresponding to this identifier.";
+                alert(errorMessage);
+            }
+    });
+
+    password = "";
+}
+
+function logOut(){
+    firebaseAuth.signOut();
+}
