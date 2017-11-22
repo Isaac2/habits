@@ -50,31 +50,32 @@ app.controller("HabitController", function($scope, $http) {
 	.then(function(response) {
 		console.log(response.data);
 		$scope.habitList = response.data;
-	});
+	})
+	.catch(function (error){
+		if(error.status === 401){
+			alert("Tu sesión ha expirado");
+			window.location = "login/index.html";
+		}
+	})
 
+	$scope.increaseScoreHabit = function(habitID){
+		console.log(habitID);
 
+		var APIurl = "https://damp-fjord-81017.herokuapp.com/habits/addScore/"+habitID+"/?token="+firebaseToken;	
+
+		$http.get(APIurl)
+		.then(function(response) {
+			$scope.habitList = response.data;
+		});	
+	};
 
 });
 
-function increaseScoreHabit(habitID){
-
-	console.log(habitID);
-
-	var APIurl = "https://damp-fjord-81017.herokuapp.com/habits/addScore/"+habitID+"/?token="+firebaseToken;	
-
-	$http.get(APIurl)
-	.then(function(response) {
-		$scope.habitList = response.data;
-	});	
-}
-
 function calculateColor(habit){
-
 	var firstRange = 0;
 	var lastRange = 50;
 
 	habit.color = "red";
 
 	return habit;
-
 }
