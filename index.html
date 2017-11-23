@@ -28,16 +28,13 @@
         </div>
       </div>
       <div class="home-pinboardWrapper stats">
-        <h4>{{user.name}}</h4>
-        <p class="smallText">{{user.level}}<p>
+        <h4>{{user.username}}</h4>
           <p class="smallText">Account: {{user.email}}<p>
-            <br>
-            <h5>HP: {{user.currentHP}}/{{user.maxHP}}</h5>
-            <h5>XP: {{user.currentXP}}/{{user.maxXP}}</h5>
           </div>
         </div>
         <div class="home-mainWrapper">
           <div class="home-segmentWrapper">
+
             <div class="home-listView" ng-controller = "TaskController">
               <hgroup class="listTitle">
                 <h3>Tasks</h3>

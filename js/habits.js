@@ -8,8 +8,23 @@ app.controller("TopBarController", function($scope) {
 	$scope.menuOptions = [{title:"Habits"},{title:"Tasks"},{title:"Settings"}];
 });
 
-app.controller("PinboardController", function($scope){
-	$scope.user = {name : "Miguel Perez", level : "Bald Paladdin Level 1", currentHP: 15, maxHP : 20, currentXP: 0, maxXP: 200};
+app.controller("PinboardController", function($scope, $http) {
+	var APIurl = "https://guarded-anchorage-21945.herokuapp.com/decodeToken/"+firebaseToken;
+
+
+	$http.get(APIurl)
+	.then(function(response) {
+	
+		var userSignedIn = response.data;				
+		var APIurl = "https://guarded-anchorage-21945.herokuapp.com/users/"+userSignedIn.uid;
+		$http.get(APIurl)
+
+		.then(function(response) {
+			$scope.user = response.data;
+			console.log(response.data)
+		})
+
+	})
 });
 
 app.controller("TaskController", function($scope){
@@ -85,9 +100,6 @@ app.controller("HabitController", function($scope, $http) {
 			console.log(error);
 		})	
 	};
-
-
-
 });
 
 function addColorToHabitsArray(habitsArray){
